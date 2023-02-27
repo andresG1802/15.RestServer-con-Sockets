@@ -17,6 +17,19 @@
         </div>
     </div>
     
+
+
+    <div class="col-sm-6">
+        <h1>Login Manual</h1>
+        <form class="d-grid">
+            <input type="text" name = "correo" class="form-control mb-2" placeholder="Correo"/>
+            <input type="text" name = "password" class="form-control mb-2" placeholder="Password"/>
+            <button type="submit" class="btn btn-primary">
+                Ingresar
+            </button>
+        </form>
+        
+    </div>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <div id="g_id_onload"
        data-client_id="1033442219483-m4vvv2dtb64sism5e9d2pv75gp23n4t2.apps.googleusercontent.com"
@@ -31,25 +44,6 @@
        data-shape="rectangular"
        data-logo_alignment="left">
     </div>
-    <script>
-        function handleCredentialResponse(response) {
-           // decodeJwtResponse() is a custom function defined by you
-           // to decode the credential response.
-           const body = {id_token: response.credential}
-           
-           fetch('http://localhost:8080/api/auth/google',{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify(body)
-           })
-           .then(resp=>resp.json())
-           .then(resp=>{
-            console.log(resp)
-           })
-           .catch(console.warn);
-        }
-      </script>
+    <script src="js/auth.js"></script>
 </body>
 </html>

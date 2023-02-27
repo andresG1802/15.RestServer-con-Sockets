@@ -4,7 +4,7 @@ const cors  = require('cors');
 const { dbConnection } = require('../database/config');
 const fileUpload = require('express-fileUpload');
 const {createServer} = require('http');
-const { socketController } = require('./sockets/controller');
+const { socketController } = require('../sockets/controller');
 class Server{
     constructor()
     {
@@ -76,7 +76,7 @@ class Server{
 
     sockets()
     {
-        this.io.on('connection', socketController);
+        this.io.on('connection', (socket)=>socketController(socket,this.io));
     }
 
     listen()
